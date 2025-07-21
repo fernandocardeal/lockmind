@@ -27,3 +27,16 @@ const copiarTexto = (id) => {
         document.execCommand("copy");
     }
 }
+
+function toggleMenu() {
+    const menu = document.getElementById('dropdownMenu');
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+}
+
+window.addEventListener('click', function (e) {
+    const menu = document.getElementById('dropdownMenu');
+    const icon = document.querySelector('.hamburguer-icon');
+    if (!icon.contains(e.target) && !menu.contains(e.target)) {
+        menu.style.display = 'none';
+    }
+});

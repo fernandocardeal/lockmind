@@ -50,6 +50,40 @@ body {
     margin: 0;
 }
 
+.menu-hamburguer {
+    position: relative;
+}
+
+.hamburguer-icon {
+    font-size: 2rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 2.8rem;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 140px;
+    z-index: 1000;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+    background-color: #eee;
+}
+
 .logout-area a.logout {
     background-color: var(--danger);
     color: white;

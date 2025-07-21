@@ -53,9 +53,15 @@ $conn->close();
     <div class="container">
         <div class="cabecalho">
             <h2>Olá, <?= htmlspecialchars($_SESSION['usuario_nome']) ?></h2>
-            <div class="logout-area">
-                <a href="logout.php" class="logout">Sair</a>
+
+            <div class="menu-hamburguer">
+                <div class="hamburguer-icon" onclick="toggleMenu()">☰</div>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="logout.php">Sair</a>
+                    <a href="configuracoes.php">Configurações</a>
+                </div>
             </div>
+
         </div>
         <div class="grid-senhas">
 
