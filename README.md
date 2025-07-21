@@ -19,4 +19,3 @@
 - HTML, CSS e JavaScript (frontend)
 - MySQL (banco de dados)
 - Apache2 (servidor web)
-- Composer (gerenciador de dependências PHP)
