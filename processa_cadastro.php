@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 $name = $_POST['name'] ?? '';
-$username = $_POST['username'] ?? '';
+$email = $_POST['email'] ?? '';
 $password = $_POST['password'] ?? '';
 $confirm_password = $_POST['confirm_password'] ?? '';
 
@@ -23,8 +23,8 @@ if ($password !== $confirm_password) {
     exit();
 }
 
-$stmt = $conn->prepare("SELECT id FROM usuario WHERE username = ?");
-$stmt->bind_param("s", $username);
+$stmt = $conn->prepare("SELECT id FROM usuario WHERE email = ?");
+$stmt->bind_param("s", $email);
 $stmt->execute();
 $stmt->store_result();
 
@@ -38,8 +38,8 @@ $stmt->close();
 
 $senha_hash = password_hash($password, PASSWORD_DEFAULT);
 
-$stmt = $conn->prepare("INSERT INTO usuario (name, username, password) VALUES (?, ?, ?)");
-$stmt->bind_param("sss", $name, $username, $senha_hash);
+$stmt = $conn->prepare("INSERT INTO usuario (name, email, password) VALUES (?, ?, ?)");
+$stmt->bind_param("sss", $name, $email, $senha_hash);
 
 if ($stmt->execute()) {
     $stmt->close();
@@ -48,7 +48,7 @@ if ($stmt->execute()) {
     <html>
     <body>
         <form id="autoLogin" action="login.php" method="post">
-            <input type="hidden" name="username" value="' . htmlspecialchars($username) . '">
+            <input type="hidden" name="email" value="' . htmlspecialchars($email) . '">
             <input type="hidden" name="password" value="' . htmlspecialchars($password) . '">
         </form>
         <script>

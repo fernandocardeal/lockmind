@@ -13,11 +13,11 @@ if ($conn->connect_error) {
     die("Erro de conexão: " . $conn->connect_error);
 }
 
-$username = $_POST['username'] ?? '';
+$email = $_POST['email'] ?? '';
 $password = $_POST['password'] ?? '';
 
-$stmt = $conn->prepare("SELECT id, name, password FROM usuario WHERE username = ?");
-$stmt->bind_param("s", $username);
+$stmt = $conn->prepare("SELECT id, name, password FROM usuario WHERE email = ?");
+$stmt->bind_param("s", $email);
 $stmt->execute();
 $stmt->store_result();
 
@@ -26,7 +26,7 @@ if ($stmt->num_rows == 1) {
     $stmt->fetch();
 
     if (password_verify($password, $hashed_password)) {
-        $_SESSION['usuario'] = $username;
+        $_SESSION['usuario'] = $email;
         $_SESSION['usuario_id'] = $user_id;
         $_SESSION['usuario_nome'] = $name;
         header("Location: homepage.php");
@@ -34,7 +34,7 @@ if ($stmt->num_rows == 1) {
     } else {
         $stmt->close();
         $conn->close();
-        header("Location: index.php?erro-p=1&username=" . $username);
+        header("Location: index.php?erro-p=1&email=" . $email);
         exit();
     }
 }

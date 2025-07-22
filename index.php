@@ -29,15 +29,14 @@ if (isset($_SESSION['usuario'])) {
             echo '<div class="error-message">Usuário inválido!</div>';
         } elseif (isset($_GET['erro-p'])) {
             echo '<div class="error-message">Senha inválida!</div>';
-            $username = $_GET['username'] ?? '';
+            $email = $_GET['email'] ?? '';
         }
         ?>
 
         <form method="post" action="login.php" autocomplete="off">
 
             <div class="form-group">
-                <input type="text" id="username" name="username" value="<?= $username ?>" placeholder="Usuário"
-                    required />
+                <input type="text" id="email" name="email" value="<?= $email ?>" placeholder="E-mail" required />
             </div>
 
             <div class="form-group see-pass">
@@ -53,6 +52,8 @@ if (isset($_SESSION['usuario'])) {
         </form>
 
         <a href="cadastro.php" class="register-link">Cadastrar-se</a>
+        <a href="cadastro.php" class="register-link">Esqueci Minha Senha</a>
+
     </div>
 
 </body>

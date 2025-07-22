@@ -37,8 +37,9 @@ if (isset($_SESSION['usuario'])) {
             <div class="form-group see-pass">
                 <input type="text" id="name" name="name" placeholder="Nome" required />
             </div>
+
             <div class="form-group see-pass">
-                <input type="text" id="username" name="username" placeholder="Usuário" required />
+                <input type="text" id="email" name="email" placeholder="E-mail" required />
             </div>
 
             <div class="form-group see-pass">
