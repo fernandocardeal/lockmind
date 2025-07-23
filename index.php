@@ -52,7 +52,7 @@ if (isset($_SESSION['usuario'])) {
         </form>
 
         <a href="cadastro.php" class="register-link">Cadastrar-se</a>
-        <a href="cadastro.php" class="register-link">Esqueci Minha Senha</a>
+        <a href="recuperar_senha.php" class="register-link">Esqueci Minha Senha</a>
 
     </div>
 

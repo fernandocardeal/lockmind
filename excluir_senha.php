@@ -14,8 +14,10 @@ if (!isset($_POST['id_senha'])) {
 $host = getenv("LOCKMIND_DB_HOST");
 $user = getenv("LOCKMIND_DB_USER");
 $pass = getenv("LOCKMIND_DB_PASS");
+$base = getenv("LOCKMIND_DB_DATABASE");
 
-$conn = new mysqli($host, $user, $pass, "lockmind");
+
+$conn = new mysqli($host, $user, $pass, $base);
 
 if ($conn->connect_error) {
     die('Erro de conexão: ' . $conn->connect_error);
