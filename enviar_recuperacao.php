@@ -19,7 +19,7 @@ if ($conn->connect_error) {
     die("Erro de conexão: " . $conn->connect_error);
 }
 
-$stmt = $conn->prepare("SELECT id FROM usuario WHERE email = ?");
+$stmt = $conn->prepare("SELECT id, name FROM usuario WHERE email = ?");
 $stmt->bind_param("s", $email);
 $stmt->execute();
 $stmt->store_result();
@@ -27,7 +27,7 @@ $stmt->store_result();
 if ($stmt->num_rows === 0) {
     die('E-mail não encontrado.');
 } else {
-    $stmt->bind_result($id);
+    $stmt->bind_result($id, $nome);
     $stmt->fetch();
 }
 
@@ -42,11 +42,11 @@ $link = "https://lionfish-refined-similarly.ngrok-free.app/redefinir_senha.php?t
 
 $assunto = "Esqueceu sua senha??? - Lockmind";
 $body = "
-    <p>Olá,</p>
+    <p>Olá, " . $nome . "!</p>
     <p>Você solicitou a recuperação da sua senha no Lockmind.</p>
     <p>Clique no link abaixo para redefinir sua senha:</p>
     <p><a href='$link'>$link</a></p>
-    <p>Esse link expira em 1 hora. Se você não fez essa solicitação, ignore este e-mail.</p>
+    <p>Esse link expira em 4 horas. Se você não fez essa solicitação, ignore este e-mail.</p>
 ";
 
 if (enviarEmail($email, $assunto, $body)) {

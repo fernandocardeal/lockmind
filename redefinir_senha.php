@@ -74,6 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title>Redefinir Senha - Lockmind</title>
     <link rel="stylesheet" href="style/redefinir_senha.css">
+    <script src="script/script.js" defer></script>
+
 </head>
 
 <body>
@@ -86,16 +88,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
 
         <form method="post">
-            <div class="form-group">
-                <input type="password" name="senha" placeholder="Nova senha" required>
+            <div class="form-group see-pass">
+                <div class="input-wrapper">
+                    <input type="password" id="senha" name="senha" placeholder="Senha" required />
+                    <img height="20" width="20" src="images/closedeye.png" alt="Mostrar senha" class="toggle-senha"
+                        onclick="toggleSenha(this, 'senha')">
+                </div>
             </div>
-            <div class="form-group">
-                <input type="password" name="confirma_senha" placeholder="Confirme a nova senha" required>
+
+            <div class="form-group see-pass">
+                <div class="input-wrapper">
+                    <input type="password" id="confirma_senha" name="confirma_senha" placeholder="Confirmar Senha"
+                        required />
+                    <img height="20" width="20" src="images/closedeye.png" alt="Mostrar senha" class="toggle-senha"
+                        onclick="toggleSenha(this, 'confirma_senha')">
+                </div>
+                <p id="mensagem-senha" style="color: red; font-size: 0.9rem;"></p>
+
             </div>
-            <div class="form-group">
+
+            <div class="form-group btnn">
                 <button class="login-button" type="submit">Alterar senha</button>
             </div>
+
         </form>
+
+        <script>
+            const senha = document.getElementById('senha');
+            const confirmar = document.getElementById('confirma_senha');
+            const mensagem = document.getElementById('mensagem-senha');
+
+            function verificarSenhas() {
+                if (senha.value !== confirmar.value) {
+                    mensagem.textContent = "As senhas não coincidem.";
+                } else {
+                    mensagem.textContent = "";
+                }
+            }
+
+            senha.addEventListener('input', verificarSenhas);
+            confirmar.addEventListener('input', verificarSenhas);
+        </script>
 
         <a href="login.php" class="register-link">Voltar ao login</a>
     </div>

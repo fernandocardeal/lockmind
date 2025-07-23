@@ -56,10 +56,11 @@ if (isset($_SESSION['usuario'])) {
                         required />
                     <img height="20" width="20" src="images/closedeye.png" alt="Mostrar senha" class="toggle-senha"
                         onclick="toggleSenha(this, 'confirm_password')">
+                    <p id="mensagem-senha" style="color: red; font-size: 0.9rem;"></p>
+
                 </div>
             </div>
 
-            <p id="mensagem-senha" style="color: red; font-size: 0.9rem;"></p>
 
 
             <button type="submit" class="login-button">Cadastrar</button>
@@ -84,14 +85,6 @@ if (isset($_SESSION['usuario'])) {
 
         senha.addEventListener('input', verificarSenhas);
         confirmar.addEventListener('input', verificarSenhas);
-
-        function validarSenhas() {
-            if (senha.value !== confirmar.value) {
-                alert("As senhas não coincidem.");
-                return false;
-            }
-            return true;
-        }
     </script>
 
 
