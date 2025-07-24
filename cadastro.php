@@ -39,7 +39,7 @@ if (isset($_SESSION['usuario'])) {
             </div>
 
             <div class="form-group see-pass">
-                <input type="text" id="email" name="email" placeholder="E-mail" required />
+                <input type="email" id="email" name="email" placeholder="E-mail" required />
             </div>
 
             <div class="form-group see-pass">
@@ -56,9 +56,9 @@ if (isset($_SESSION['usuario'])) {
                         required />
                     <img height="20" width="20" src="images/closedeye.png" alt="Mostrar senha" class="toggle-senha"
                         onclick="toggleSenha(this, 'confirm_password')">
-                    <p id="mensagem-senha" style="color: red; font-size: 0.9rem;"></p>
-
                 </div>
+                <p id="mensagem-senha" style="color: red; font-size: 0.9rem;"></p>
+
             </div>
 
 

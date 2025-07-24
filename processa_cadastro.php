@@ -31,7 +31,7 @@ $stmt->store_result();
 if ($stmt->num_rows > 0) {
     $stmt->close();
     $conn->close();
-    header("Location: register.php?erro=1");
+    header("Location: cadastro.php?erro=1");
     exit();
 }
 $stmt->close();
